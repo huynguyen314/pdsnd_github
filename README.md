@@ -24,5 +24,7 @@ We will learn about bike share use in Chicago, New York City, and Washington by 
 
 ### Credits
 [Motivate](https://www.motivateco.com)
+
 [Geeksforgeeks](https://www.geeksforgeeks.org/)
 
+[GitStyleGuide](https://udacity.github.io/git-styleguide/)
