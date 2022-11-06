@@ -101,7 +101,7 @@ def time_stats(df):
     popular_start_hour = df.start_hour.mode()[0]
     print('The most common start hour:', popular_start_hour)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 
@@ -124,7 +124,7 @@ def station_stats(df):
     popular_journey = df['journey'].mode()[0]
     print('The most common journey:', popular_journey)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 
@@ -137,12 +137,12 @@ def trip_duration_stats(df):
     df['travel_time'] = (df['End Time'] - df['Start Time']).dt.total_seconds()
     df = df[df['travel_time'] > 0]
     # TO DO: display total travel time
-    print('Total travel time: %s seconds.' % (df['travel_time'].sum()))
+    print(f"Total travel time: {df['travel_time'].sum()} seconds.")
 
     # TO DO: display mean travel time
-    print('Average travel time: %s seconds.' % (df['travel_time'].mean()))
+    print(f"Average travel time: {df['travel_time'].mean()} seconds.")
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 
@@ -166,7 +166,7 @@ def user_stats(df):
         print('The most recent year of birth:', int(df['Birth Year'].max()))
         print('The common year of birth:', int(df['Birth Year'].mode()[0]))
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 def display_data(df):
