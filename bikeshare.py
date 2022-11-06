@@ -6,6 +6,11 @@ CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
 
+CITIES = ['chicago', 'new york city', 'washington']
+MONTHS = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
+WEEKDAYS = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -19,19 +24,19 @@ def get_filters():
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         city = input("Please input the city you want to analyze (chicago, new york city, washington): ")
-        if city.lower() in ['chicago', 'new york city', 'washington']:
+        if city.lower() in CITIES:
             break
 
     # TO DO: get user input for month (all, january, february, ..., june)
     while True:
         month = input("Please input the month you want to analyze (all, january, february, ..., june): ")
-        if month.lower() in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
+        if month.lower() in MONTHS:
             break
     
     # TO DO: get user input for day of week (all, monday, tuesday, ..., sunday)
     while True:
         day = input("Please input the day you want to analyze (all, monday, tuesday, ... sunday): ")
-        if day.lower() in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
+        if day.lower() in WEEKDAYS:
             break
 
     print('-'*40)
@@ -85,18 +90,18 @@ def time_stats(df):
 
     # TO DO: display the most common month
     popular_month = df.month.mode()[0]
-    print('The most common month: ', popular_month)
+    print('The most common month:', popular_month)
 
     # TO DO: display the most common day of week
     popular_day = df.day_of_week.mode()[0]
-    print('The most common day of week: ', popular_day)
+    print('The most common day of week:', popular_day)
 
     # TO DO: display the most common start hour
     df['start_hour'] = df['Start Time'].dt.hour
     popular_start_hour = df.start_hour.mode()[0]
-    print('The most common start hour: ', popular_start_hour)
+    print('The most common start hour:', popular_start_hour)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 
@@ -119,7 +124,7 @@ def station_stats(df):
     popular_journey = df['journey'].mode()[0]
     print('The most common journey:', popular_journey)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 
@@ -132,12 +137,12 @@ def trip_duration_stats(df):
     df['travel_time'] = (df['End Time'] - df['Start Time']).dt.total_seconds()
     df = df[df['travel_time'] > 0]
     # TO DO: display total travel time
-    print('Total travel time: %s seconds.' % (df['travel_time'].sum()))
+    print(f"Total travel time: {df['travel_time'].sum()} seconds.")
 
     # TO DO: display mean travel time
-    print('Average travel time: %s seconds.' % (df['travel_time'].mean()))
+    print(f"Average travel time: {df['travel_time'].mean()} seconds.")
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 
@@ -161,7 +166,7 @@ def user_stats(df):
         print('The most recent year of birth:', int(df['Birth Year'].max()))
         print('The common year of birth:', int(df['Birth Year'].mode()[0]))
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print(f"\nThis took {(time.time() - start_time)} seconds.")
     print('-'*40)
 
 def display_data(df):
